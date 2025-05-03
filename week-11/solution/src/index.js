@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const hono_1 = require("hono");
+const userRoutes_1 = require("./router/userRoutes");
+const cors_1 = require("hono/cors");
+const postRoutes_1 = require("./router/postRoutes");
+const tagRoutes_1 = require("./router/tagRoutes");
+const app = new hono_1.Hono();
+app.use((0, cors_1.cors)());
+app.route('/api/v1/user', userRoutes_1.userRouter);
+app.route('/api/v1/posts', postRoutes_1.postRouter);
+app.route('/api/v1/tags', tagRoutes_1.tagRouter);
+exports.default = app;

@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userRouter = void 0;
+const hono_1 = require("hono");
+const userController_1 = require("../controller/userController");
+const user_1 = require("../middleware/user");
+exports.userRouter = new hono_1.Hono();
+exports.userRouter.post('/signup', userController_1.signup);
+exports.userRouter.post('/signin', userController_1.signin);
+exports.userRouter.get('/user/:id', user_1.authmiddleware, userController_1.userProfile);
+exports.userRouter.get('/users', user_1.authmiddleware, userController_1.getAllUsers);
